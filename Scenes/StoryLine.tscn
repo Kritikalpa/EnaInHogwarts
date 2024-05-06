@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://lunchds.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Sprites/Background.jpg" type="Texture" id=2]
+[ext_resource path="res://Sprites/startnext.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/start.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/StoryLine.cs" type="Script" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "text appear"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/CanvasLayer/Control/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimationPlayer/TextureButton:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 1.09892, 1.10011 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "text appear"
+"anims/text appear" = SubResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="AnimationPlayer"]
+
+[node name="Control" type="Control" parent="AnimationPlayer/CanvasLayer"]
+margin_left = 400.0
+margin_top = 500.0
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="AnimationPlayer/CanvasLayer/Control"]
+margin_left = -120.776
+margin_top = -385.706
+margin_right = 729.224
+margin_bottom = 151.294
+custom_fonts/font = ExtResource( 1 )
+text = "Harry, Hermione, Ron and Ena has been detained 
+by Professor McGonagall and is told to help 
+Hagrid with his task. They go in the Forbidden 
+forest in search of a missing unicorn. But somehow
+Ena gets lost. She faces a herd of enormous trolls
+where she needs to survive till help arrives. Ena
+is exceptionally good at defence against the dark 
+arts. Collect the Potions nearby to power up Ena.
+Use this to BEAT THE TROLLS.
+  "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="AnimationPlayer"]
+margin_left = 1166.36
+margin_top = 662.676
+margin_right = 1339.36
+margin_bottom = 729.676
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="AnimationPlayer/TextureButton" to="." method="_on_TextureButton_pressed"]

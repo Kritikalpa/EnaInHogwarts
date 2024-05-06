@@ -1,0 +1,626 @@
+[gd_scene load_steps=57 format=2]
+
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sprites/Background.jpg" type="Texture" id=2]
+[ext_resource path="res://Sprites/Ground.jpg" type="Texture" id=3]
+[ext_resource path="res://Scripts/CameraFollow.cs" type="Script" id=4]
+[ext_resource path="res://Sprites/Moon.png" type="Texture" id=5]
+[ext_resource path="res://Scripts/Gameplay.cs" type="Script" id=6]
+[ext_resource path="res://Scenes/Green Zombie.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Red Zombie.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Ghost.tscn" type="PackedScene" id=9]
+[ext_resource path="res://touch_right_pressed.png" type="Texture" id=10]
+[ext_resource path="res://right.png" type="Texture" id=11]
+[ext_resource path="res://touch_left_pressed.png" type="Texture" id=12]
+[ext_resource path="res://left.png" type="Texture" id=13]
+[ext_resource path="res://jumpupdated.png" type="Texture" id=14]
+[ext_resource path="res://jumpupdated pressed.png" type="Texture" id=15]
+[ext_resource path="res://shoot.png" type="Texture" id=16]
+[ext_resource path="res://shoot pressed.png" type="Texture" id=17]
+[ext_resource path="res://pause pressed.png" type="Texture" id=18]
+[ext_resource path="res://pause.png" type="Texture" id=19]
+[ext_resource path="res://Lava-PNG-Clipart.png" type="Texture" id=20]
+[ext_resource path="res://Sprites/background/PNG/game_background_3/layers/rocks.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/background/PNG/game_background_3/layers/left half.png" type="Texture" id=22]
+[ext_resource path="res://Sprites/background/PNG/game_background_3/layers/ground_3.png" type="Texture" id=23]
+[ext_resource path="res://Sprites/background/PNG/game_background_3/layers/ground_1.png" type="Texture" id=24]
+[ext_resource path="res://Sprites/background/PNG/game_background_3/layers/ground_2.png" type="Texture" id=25]
+[ext_resource path="res://Sprites/background/PNG/game_background_3/layers/right half.png" type="Texture" id=26]
+[ext_resource path="res://Sprites/background/PNG/game_background_3/layers/clouds_1.png" type="Texture" id=27]
+[ext_resource path="res://Sprites/IMGBIN_hogwarts-harry-potter-castlevania-lords-of-shadow-2-png_nDiEvbfL.png" type="Texture" id=28]
+[ext_resource path="res://Sprites/background/PNG/game_background_4/layers/rocks.png" type="Texture" id=29]
+[ext_resource path="res://Scenes/PauseScreen.tscn" type="PackedScene" id=30]
+[ext_resource path="res://Scenes/PowerUp.tscn" type="PackedScene" id=31]
+[ext_resource path="res://lunchds.tres" type="DynamicFont" id=32]
+[ext_resource path="res://Scenes/HighScoreView.tscn" type="PackedScene" id=33]
+[ext_resource path="res://soundtrack.ogg" type="AudioStream" id=34]
+[ext_resource path="res://Sprites/MISSION.png" type="Texture" id=35]
+[ext_resource path="res://Sprites/spider/2.png" type="Texture" id=36]
+[ext_resource path="res://Sprites/spider/4.png" type="Texture" id=37]
+[ext_resource path="res://Sprites/spider/3.png" type="Texture" id=38]
+[ext_resource path="res://Sprites/spider/1.png" type="Texture" id=39]
+[ext_resource path="res://Sprites/heart/3.png" type="Texture" id=40]
+[ext_resource path="res://Sprites/heart/5.png" type="Texture" id=41]
+[ext_resource path="res://Sprites/heart/10.png" type="Texture" id=42]
+[ext_resource path="res://Sprites/heart/1.png" type="Texture" id=43]
+[ext_resource path="res://Sprites/heart/2.png" type="Texture" id=44]
+[ext_resource path="res://Sprites/heart/6.png" type="Texture" id=45]
+[ext_resource path="res://Sprites/heart/7.png" type="Texture" id=46]
+[ext_resource path="res://Sprites/heart/8.png" type="Texture" id=47]
+[ext_resource path="res://Sprites/heart/11.png" type="Texture" id=48]
+[ext_resource path="res://Sprites/heart/9.png" type="Texture" id=49]
+[ext_resource path="res://Sprites/heart/4.png" type="Texture" id=50]
+[ext_resource path="res://Sprites/game over.png" type="Texture" id=51]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 5624.4, 63.2282 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 43 ), ExtResource( 44 ), ExtResource( 40 ), ExtResource( 50 ), ExtResource( 41 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 49 ), ExtResource( 42 ), ExtResource( 48 ) ],
+"loop": true,
+"name": "default",
+"speed": 8.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 37 ), ExtResource( 38 ), ExtResource( 36 ), ExtResource( 39 ), ExtResource( 36 ), ExtResource( 38 ) ],
+"loop": true,
+"name": "default",
+"speed": 8.0
+} ]
+
+[sub_resource type="Animation" id=2]
+resource_name = "objective"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "gameover"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer2/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -0.1, 0, 1, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Gameplay" type="Node2D"]
+position = Vector2( 60, 35 )
+script = ExtResource( 6 )
+greenZombie = ExtResource( 7 )
+redZombie = ExtResource( 8 )
+ghost = ExtResource( 9 )
+
+[node name="parallax bg" type="ParallaxBackground" parent="."]
+
+[node name="sky" type="ParallaxLayer" parent="parallax bg"]
+motion_scale = Vector2( 0.1, 0.1 )
+
+[node name="Background1" type="Sprite" parent="parallax bg/sky"]
+position = Vector2( 1.27356, 1.00049 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Background2" type="Sprite" parent="parallax bg/sky"]
+position = Vector2( 60, -685 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Background3" type="Sprite" parent="parallax bg/sky"]
+position = Vector2( 1340, -685 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Background4" type="Sprite" parent="parallax bg/sky"]
+position = Vector2( 1340, 35 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Background11" type="Sprite" parent="parallax bg/sky"]
+position = Vector2( -1220, -685 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Background12" type="Sprite" parent="parallax bg/sky"]
+position = Vector2( -1220, 35 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Moon" type="Sprite" parent="parallax bg/sky"]
+position = Vector2( 345.26, -216.318 )
+texture = ExtResource( 5 )
+
+[node name="mountain" type="ParallaxLayer" parent="parallax bg"]
+motion_scale = Vector2( 0.3, 0.3 )
+
+[node name="Background1" type="Sprite" parent="parallax bg/mountain"]
+position = Vector2( -515.362, -602.428 )
+texture = ExtResource( 21 )
+centered = false
+
+[node name="Background4" type="Sprite" parent="parallax bg/mountain"]
+position = Vector2( -1049.8, -478.2 )
+texture = ExtResource( 21 )
+centered = false
+
+[node name="Background3" type="Sprite" parent="parallax bg/mountain"]
+position = Vector2( -2882.94, -552.964 )
+texture = ExtResource( 21 )
+centered = false
+
+[node name="Background6" type="Sprite" parent="parallax bg/mountain"]
+position = Vector2( -2882.94, -552.964 )
+texture = ExtResource( 21 )
+centered = false
+
+[node name="Background2" type="Sprite" parent="parallax bg/mountain"]
+position = Vector2( 954.212, -550.964 )
+texture = ExtResource( 21 )
+centered = false
+
+[node name="Background5" type="Sprite" parent="parallax bg/mountain"]
+position = Vector2( 954.212, -550.964 )
+texture = ExtResource( 21 )
+centered = false
+
+[node name="cloud" type="ParallaxLayer" parent="parallax bg"]
+motion_scale = Vector2( 0.4, 0.4 )
+
+[node name="c1" type="Sprite" parent="parallax bg/cloud"]
+position = Vector2( -166.97, -476.966 )
+texture = ExtResource( 27 )
+centered = false
+
+[node name="c2" type="Sprite" parent="parallax bg/cloud"]
+position = Vector2( -1901.18, -416.25 )
+texture = ExtResource( 27 )
+centered = false
+
+[node name="c3" type="Sprite" parent="parallax bg/cloud"]
+position = Vector2( 1351.43, -509.626 )
+texture = ExtResource( 27 )
+centered = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="parallax bg"]
+
+[node name="trees" type="ParallaxLayer" parent="parallax bg"]
+motion_scale = Vector2( 0.6, 0.6 )
+
+[node name="t1" type="Sprite" parent="parallax bg/trees"]
+position = Vector2( 1018.22, -417.452 )
+texture = ExtResource( 23 )
+centered = false
+
+[node name="t2" type="Sprite" parent="parallax bg/trees"]
+position = Vector2( -901.258, -462.242 )
+texture = ExtResource( 23 )
+centered = false
+
+[node name="t3" type="Sprite" parent="parallax bg/trees"]
+position = Vector2( -2819.14, -458.636 )
+texture = ExtResource( 23 )
+centered = false
+
+[node name="rocks" type="Sprite" parent="parallax bg/trees"]
+position = Vector2( -1555.53, 351.472 )
+scale = Vector2( 0.950722, 0.669373 )
+texture = ExtResource( 29 )
+
+[node name="t4" type="Sprite" parent="parallax bg/trees"]
+position = Vector2( -3691.55, -318.04 )
+texture = ExtResource( 22 )
+centered = false
+
+[node name="t5" type="Sprite" parent="parallax bg/trees"]
+position = Vector2( -2819.93, -319.04 )
+texture = ExtResource( 24 )
+centered = false
+
+[node name="Sprite" type="Sprite" parent="parallax bg/trees"]
+position = Vector2( 1253.25, 183.062 )
+scale = Vector2( 2.78996, 2.58437 )
+texture = ExtResource( 28 )
+
+[node name="t6" type="Sprite" parent="parallax bg/trees"]
+position = Vector2( -628.065, -329.855 )
+texture = ExtResource( 25 )
+centered = false
+
+[node name="t7" type="Sprite" parent="parallax bg/trees"]
+position = Vector2( -906.442, -322.41 )
+texture = ExtResource( 26 )
+centered = false
+
+[node name="t11" type="Sprite" parent="parallax bg/trees"]
+position = Vector2( 3378.41, 163.752 )
+texture = ExtResource( 25 )
+
+[node name="t9" type="Sprite" parent="parallax bg/trees"]
+position = Vector2( 2243.08, 202.805 )
+texture = ExtResource( 25 )
+
+[node name="t10" type="Sprite" parent="parallax bg/trees"]
+position = Vector2( 4161.05, 202.437 )
+texture = ExtResource( 25 )
+
+[node name="Ground Parent" type="StaticBody2D" parent="."]
+
+[node name="Ground1" type="Sprite" parent="Ground Parent"]
+position = Vector2( 0, 652 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Ground15" type="Sprite" parent="Ground Parent"]
+position = Vector2( -450, 652 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Ground16" type="Sprite" parent="Ground Parent"]
+position = Vector2( -900, 652 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Ground17" type="Sprite" parent="Ground Parent"]
+position = Vector2( -1350, 652 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Ground18" type="Sprite" parent="Ground Parent"]
+position = Vector2( -1800, 652 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Ground19" type="Sprite" parent="Ground Parent"]
+position = Vector2( -2250, 652 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Ground20" type="Sprite" parent="Ground Parent"]
+position = Vector2( -2700, 652 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Ground21" type="Sprite" parent="Ground Parent"]
+position = Vector2( -3150, 652 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Ground22" type="Sprite" parent="Ground Parent"]
+position = Vector2( -3600, 652 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Ground23" type="Sprite" parent="Ground Parent"]
+position = Vector2( -4050, 652 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Ground24" type="Sprite" parent="Ground Parent"]
+position = Vector2( -4500, 652 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Ground25" type="Sprite" parent="Ground Parent"]
+position = Vector2( -4950, 652 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Ground2" type="Sprite" parent="Ground Parent"]
+position = Vector2( 450, 652 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Ground3" type="Sprite" parent="Ground Parent"]
+position = Vector2( 900, 652 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Ground4" type="Sprite" parent="Ground Parent"]
+position = Vector2( 1350, 652 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Ground5" type="Sprite" parent="Ground Parent"]
+position = Vector2( 1800, 652 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Ground6" type="Sprite" parent="Ground Parent"]
+position = Vector2( 2250, 652 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Ground7" type="Sprite" parent="Ground Parent"]
+position = Vector2( 2700, 652 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Ground8" type="Sprite" parent="Ground Parent"]
+position = Vector2( 3150, 652 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Ground9" type="Sprite" parent="Ground Parent"]
+position = Vector2( 3600, 652 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Ground10" type="Sprite" parent="Ground Parent"]
+position = Vector2( 4050, 652 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Ground11" type="Sprite" parent="Ground Parent"]
+position = Vector2( 4500, 652 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Ground12" type="Sprite" parent="Ground Parent"]
+position = Vector2( 4950, 652 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Ground13" type="Sprite" parent="Ground Parent"]
+position = Vector2( 5400, 652 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Ground14" type="Sprite" parent="Ground Parent"]
+position = Vector2( 5850, 652 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground Parent"]
+position = Vector2( 675.009, 723.033 )
+shape = SubResource( 1 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 405.577, 415.645 )
+
+[node name="Main Cam" type="Camera2D" parent="."]
+position = Vector2( 640, 360 )
+current = true
+script = ExtResource( 4 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Restart" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="gui" type="CanvasLayer" parent="."]
+
+[node name="left" type="TouchScreenButton" parent="gui"]
+position = Vector2( 127.997, 603.723 )
+scale = Vector2( 0.329375, 0.300216 )
+normal = ExtResource( 13 )
+pressed = ExtResource( 12 )
+action = "move_left"
+
+[node name="right" type="TouchScreenButton" parent="gui"]
+position = Vector2( 294.533, 600.457 )
+scale = Vector2( 0.345757, 0.305404 )
+normal = ExtResource( 11 )
+pressed = ExtResource( 10 )
+action = "move_right"
+
+[node name="jump" type="TouchScreenButton" parent="gui"]
+position = Vector2( 1014.88, 591.959 )
+scale = Vector2( 0.409166, 0.369446 )
+normal = ExtResource( 14 )
+pressed = ExtResource( 15 )
+action = "jump"
+
+[node name="shoot" type="TouchScreenButton" parent="gui"]
+position = Vector2( 1181.16, 476.713 )
+scale = Vector2( 0.378346, 0.35084 )
+normal = ExtResource( 16 )
+pressed = ExtResource( 17 )
+action = "shoot"
+
+[node name="pause" type="TouchScreenButton" parent="gui"]
+position = Vector2( 1304.16, 34.0809 )
+scale = Vector2( 0.158292, 0.158291 )
+normal = ExtResource( 19 )
+pressed = ExtResource( 18 )
+action = "ui_cancel"
+
+[node name="Lava-PNG-Clipart" type="Sprite" parent="."]
+position = Vector2( -5328.42, 871.548 )
+texture = ExtResource( 20 )
+
+[node name="Lava-PNG-Clipart3" type="Sprite" parent="."]
+position = Vector2( -5328.42, 780.548 )
+texture = ExtResource( 20 )
+
+[node name="Lava-PNG-Clipart4" type="Sprite" parent="."]
+position = Vector2( -6078.22, 871.43 )
+texture = ExtResource( 20 )
+
+[node name="Lava-PNG-Clipart2" type="Sprite" parent="."]
+position = Vector2( -6078.22, 781.43 )
+texture = ExtResource( 20 )
+
+[node name="Lava-PNG-Clipart8" type="Sprite" parent="."]
+position = Vector2( 7433.65, 881.424 )
+texture = ExtResource( 20 )
+
+[node name="Lava-PNG-Clipart7" type="Sprite" parent="."]
+position = Vector2( 7433.65, 790.424 )
+texture = ExtResource( 20 )
+
+[node name="Lava-PNG-Clipart6" type="Sprite" parent="."]
+position = Vector2( 6683.85, 881.307 )
+texture = ExtResource( 20 )
+
+[node name="Lava-PNG-Clipart5" type="Sprite" parent="."]
+position = Vector2( 6683.85, 791.307 )
+texture = ExtResource( 20 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseScreen" parent="CanvasLayer" instance=ExtResource( 30 )]
+visible = false
+
+[node name="PowerUp2" parent="." instance=ExtResource( 31 )]
+position = Vector2( 3816.3, 360.727 )
+
+[node name="PowerUp3" parent="." instance=ExtResource( 31 )]
+position = Vector2( 4861.59, 362.576 )
+
+[node name="PowerUp" parent="." instance=ExtResource( 31 )]
+position = Vector2( 2655.49, 367.76 )
+
+[node name="PowerUp4" parent="." instance=ExtResource( 31 )]
+position = Vector2( -1726.38, 364.904 )
+
+[node name="PowerUp5" parent="." instance=ExtResource( 31 )]
+position = Vector2( -2894.23, 347.505 )
+
+[node name="PowerUp8" parent="." instance=ExtResource( 31 )]
+position = Vector2( -5247.04, 150.752 )
+
+[node name="PowerUp7" parent="." instance=ExtResource( 31 )]
+position = Vector2( 6469.66, 230.887 )
+
+[node name="PowerUp6" parent="." instance=ExtResource( 31 )]
+position = Vector2( -4137.31, 341.231 )
+
+[node name="ElapsedTime" type="Timer" parent="."]
+
+[node name="Score Counter" type="Node2D" parent="."]
+
+[node name="UI" type="CanvasLayer" parent="Score Counter"]
+
+[node name="Control" type="Control" parent="Score Counter/UI"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Points" type="Label" parent="Score Counter/UI/Control"]
+margin_left = 40.0
+margin_top = 69.0
+margin_right = 155.0
+margin_bottom = 100.0
+custom_fonts/font = ExtResource( 32 )
+text = "00:00"
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Survived" type="Label" parent="Score Counter/UI/Control"]
+margin_left = 40.0
+margin_top = 30.0
+margin_right = 80.0
+margin_bottom = 80.0
+custom_fonts/font = ExtResource( 32 )
+text = "Time"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="heart" type="AnimatedSprite" parent="Score Counter/UI"]
+position = Vector2( 1338.22, 224.475 )
+scale = Vector2( 0.404749, 0.497556 )
+frames = SubResource( 3 )
+frame = 9
+
+[node name="mana" type="AnimatedSprite" parent="Score Counter/UI"]
+position = Vector2( 1336.71, 155.587 )
+frames = SubResource( 4 )
+frame = 5
+
+[node name="manacount" type="Label" parent="Score Counter/UI"]
+margin_left = 1232.7
+margin_top = 119.411
+margin_right = 1300.7
+margin_bottom = 170.411
+custom_fonts/font = ExtResource( 32 )
+text = "10 x"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="heartcount" type="Label" parent="Score Counter/UI"]
+margin_left = 1243.26
+margin_top = 195.328
+margin_right = 1311.26
+margin_bottom = 246.328
+custom_fonts/font = ExtResource( 32 )
+text = "2 x"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HighScoreView" parent="." instance=ExtResource( 33 )]
+position = Vector2( 2.27222, 0 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 34 )
+autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "objective"
+anims/objective = SubResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="AnimationPlayer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 165.807
+margin_top = 299.959
+margin_right = 785.807
+margin_bottom = 426.959
+texture = ExtResource( 35 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="CanvasLayer2"]
+anims/gameover = SubResource( 5 )
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer2/AnimationPlayer2"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.00535271
+anchor_top = 0.00190319
+anchor_right = 0.00535271
+anchor_bottom = 0.00190319
+margin_left = 468.78
+margin_top = 299.959
+margin_right = 840.78
+margin_bottom = 374.959
+texture = ExtResource( 51 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="endondead" type="Timer" parent="."]
+wait_time = 3.0
+[connection signal="timeout" from="Timer" to="." method="_on_Monster_Spawn"]
+[connection signal="timeout" from="Restart" to="." method="_on_Player_Died"]
+[connection signal="timeout" from="ElapsedTime" to="." method="_on_ElapsedTime_timeout"]
+[connection signal="timeout" from="endondead" to="." method="_on_endondead_timeout"]

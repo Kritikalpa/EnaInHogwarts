@@ -1,0 +1,65 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://Sprites/3_TROLL/WALK/WALK_001.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/3_TROLL/WALK/WALK_005.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/3_TROLL/WALK/WALK_000.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/3_TROLL/WALK/WALK_003.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/3_TROLL/WALK/WALK_004.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/3_TROLL/WALK/WALK_006.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/3_TROLL/WALK/WALK_002.png" type="Texture" id=7]
+[ext_resource path="res://Scripts/Monster.cs" type="Script" id=8]
+[ext_resource path="res://Sprites/3_TROLL/DIE/DIE_001.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/3_TROLL/DIE/DIE_005.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/3_TROLL/DIE/DIE_004.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/3_TROLL/DIE/DIE_000.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/3_TROLL/DIE/DIE_003.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/3_TROLL/DIE/DIE_006.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/3_TROLL/DIE/DIE_002.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/3_TROLL/ATTAK/ATTAK_003.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/3_TROLL/ATTAK/ATTAK_002.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/3_TROLL/ATTAK/ATTAK_000.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/3_TROLL/ATTAK/ATTAK_004.png" type="Texture" id=19]
+[ext_resource path="res://Sprites/3_TROLL/ATTAK/ATTAK_001.png" type="Texture" id=20]
+[ext_resource path="res://Sprites/3_TROLL/ATTAK/ATTAK_006.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/3_TROLL/ATTAK/ATTAK_005.png" type="Texture" id=22]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 1 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 2 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 20 ), ExtResource( 17 ), ExtResource( 16 ), ExtResource( 19 ), ExtResource( 22 ), ExtResource( 21 ) ],
+"loop": false,
+"name": "Attack",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 9 ), ExtResource( 15 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 14 ) ],
+"loop": false,
+"name": "Dead",
+"speed": 12.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 120.64, 97.3687 )
+
+[node name="Ghost" type="KinematicBody2D" groups=[
+"Enemy",
+]]
+collision_mask = 2
+script = ExtResource( 8 )
+
+[node name="Animation" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.4, 0.4 )
+frames = SubResource( 1 )
+animation = "Attack"
+frame = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 18.157, 0 )
+shape = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
